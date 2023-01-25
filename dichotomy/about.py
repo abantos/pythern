@@ -1,7 +1,7 @@
 """
 """
 
-project = 'dichotomy'
+project = 'dichotomy-patterns'
 version = '0.0'
 release = '0.0.2'
 description = 'A dependency injection container for python applications'
