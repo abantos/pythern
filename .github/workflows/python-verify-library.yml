@@ -33,9 +33,9 @@ jobs:
     - name: Run Tests
       run: |
         bolt run-unit-tests
-    - name: Build Documentation
-      run: |
-        make -C docs html
+    # - name: Build Documentation
+    #   run: |
+    #     make -C docs html
     - name: Build Package
       run: python setup.py bdist_wheel sdist
         
