@@ -5,4 +5,3 @@ m2r
 nose
 sphinx
 sphinx-rtd-theme
-wheel
