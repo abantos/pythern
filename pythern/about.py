@@ -1,9 +1,9 @@
 """
 """
 
-project = 'dichotomy-patterns'
+project = 'pythern'
 version = '0.0'
-release = '0.0.2'
+release = '0.0.3'
 description = 'A dependency injection container for python applications'
 copyright = '2018 Abantos'
 author = 'Isaac Rodriguez'

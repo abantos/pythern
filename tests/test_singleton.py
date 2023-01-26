@@ -1,6 +1,6 @@
 import unittest
 
-import dichotomy.singleton as singleton
+import pythern.singleton as singleton
 
 
 class TestSingleton(unittest.TestCase):

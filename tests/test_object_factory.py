@@ -1,6 +1,6 @@
 import unittest
 
-import dichotomy.object_factory as core_factory
+import pythern.object_factory as core_factory
 
 
 class TestObjectBuilderFactory(unittest.TestCase):

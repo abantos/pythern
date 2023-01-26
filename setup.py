@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 from m2r import parse_from_file
 from os import path
-from dichotomy import about
+from pythern import about
 
 readme_file = path.join(path.dirname(path.abspath(__file__)), 'README.md')
 readme = parse_from_file(readme_file)
