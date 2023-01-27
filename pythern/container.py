@@ -55,5 +55,5 @@ class Container(object):
 
 
     def _collect_type_arguments(self, type_class, collect_func):
-        type_arguments = inspect.getargspec(type_class.__init__).args
+        type_arguments = inspect.getfullargspec(type_class.__init__).args
         return [collect_func(argument) for argument in type_arguments[1:]]

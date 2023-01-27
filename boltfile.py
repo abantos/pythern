@@ -6,11 +6,11 @@ import pythern.about as about
 
 bolt.register_task('default', ['pip', 'ut'])
 bolt.register_task('clear-pyc', ['delete-pyc.source', 'delete-pyc.tests'])
-bolt.register_task('ut', ['clear-pyc', 'nose'])
 bolt.register_task('ct', ['conttest'])
+bolt.register_task('ut', ['clear-pyc', 'shell.pytest'])
 
 # CI/CD tasks
-bolt.register_task('run-unit-tests', ['clear-pyc', 'mkdir', 'nose.ci'])
+bolt.register_task('run-unit-tests', ['clear-pyc', 'shell.pytest.coverage'])
 
 
 
@@ -26,6 +26,14 @@ config = {
         'command': 'install',
         'options': {
             'r': os.path.join(PROJECT_ROOT, 'requirements.txt'),
+        },
+    },
+    'shell': {
+        'pytest': {
+            'command': 'pytest',
+            'coverage': {
+                'arguments': [f'--cov={about.project}', '--cov-report', f'html:{COVERAGE_DIR}', TEST_DIR]
+            }
         },
     },
     'delete-pyc': {

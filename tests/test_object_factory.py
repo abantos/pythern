@@ -45,13 +45,13 @@ class TestObjectBuilderFactory(unittest.TestCase):
     def test_can_provide_positional_arguments_to_create_object(self):
         self.factory.register_type(self.type_id, self.test_builder)
         self.factory.create(self.type_id, 1, 2, 3)
-        self.assertEquals(self.test_builder.args, (1, 2, 3))
+        self.assertEqual(self.test_builder.args, (1, 2, 3))
 
 
     def test_can_provide_keword_arguments_to_create_object(self):
         self.factory.register_type(self.type_id, self.test_builder)
         self.factory.create(self.type_id, a=1, b=2, c=3)
-        self.assertEquals(self.test_builder.kwargs, {'a':1, 'b':2, 'c':3})
+        self.assertEqual(self.test_builder.kwargs, {'a':1, 'b':2, 'c':3})
 
 
     def test_can_register_a_callable_as_a_builder(self):
