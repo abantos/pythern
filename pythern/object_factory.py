@@ -13,19 +13,19 @@ class as it is:
 
     import dichotomy.object_factory as core_factory
 
-    class StandardAccountingService(object):
+    class StandardAccountingService:
 
         def add_invoice(self, invoice):
             # add the invoice
 
 
-    class StandardAccountingServiceBuilder(object):
+    class StandardAccountingServiceBuilder:
 
         def build(self, *args, **kwargs):
             return StandardAccountingService()
 
 
-    class QuickBooksOnlineAccountingService(object):
+    class QuickBooksOnlineAccountingService:
 
         def __init__(self, qb_url):
             self._url = qb_url
@@ -34,7 +34,7 @@ class as it is:
             # add the invoice online
 
 
-    class QuickBooksOnlineAccountingServiceBuilder(object):
+    class QuickBooksOnlineAccountingServiceBuilder:
 
         def build(self, *args, **kwargs):
             url = kwargs.get('url')
@@ -125,7 +125,7 @@ created or if it already exist, but as far as the client code is concerned, it
 shouldn't matter.
 """
 
-class ObjectBuilderFactory(object):
+class ObjectBuilderFactory:
     """
     This class provides a flexible interface to create families of objects based
     on a specified ``type_id`` identifier and using a builder object that knows
@@ -192,13 +192,13 @@ class ObjectBuilderFactory(object):
 
         ..  code-block:: python
 
-            class BuildMethodBuilder(object):
+            class BuildMethodBuilder:
 
                 def build(self, *args, **kwargs):
                     # Build and return specified object.
 
             
-            class CallableClassBuilder(object):
+            class CallableClassBuilder:
 
                 def __call__(self, *args, **kwargs):
                     # Build and return specified object.
@@ -210,7 +210,7 @@ class ObjectBuilderFactory(object):
 
             # We can even implement the builder interface in the actual class
             # we want to create.
-            class SpecificObject(object):
+            class SpecificObject:
 
                 def __init__(self, *args, **kwargs):
                     # Initialize the object.

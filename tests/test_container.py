@@ -60,27 +60,27 @@ class TestContainer(unittest.TestCase):
         assert_that(resolved).is_none()
 
 
-class Service(object):
+class Service:
     pass
 
 
-class Manager(object):
+class Manager:
     pass
 
 
-class RegisteredCompositeObject(object):
+class RegisteredCompositeObject:
     def __init__(self, service, manager):
         self.service = service
         self.manager = manager
 
 
-class CompositeObject(object):
+class CompositeObject:
     def __init__(self, service, manager):
         self.service = service
         self.manager = manager
 
 
-class UnresolvableObject(object):
+class UnresolvableObject:
     def __init__(self, x, y):
         self.x = x
         self.y = y

@@ -30,7 +30,7 @@ be one instance. The following is an example on how this class should be used:
 
 
     
-    class _RatingServiceImp(object):
+    class _RatingServiceImp:
 
 
         def rate(self, shipment_id):

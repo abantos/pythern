@@ -63,7 +63,7 @@ class TestObjectBuilderFactory(unittest.TestCase):
 
 
 
-class BuilderDouble(object):
+class BuilderDouble:
     
     def __init__(self):
         self.object_to_build = None
