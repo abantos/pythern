@@ -1,4 +1,5 @@
 import os.path
+import sys
 
 import bolt
 
@@ -30,9 +31,10 @@ config = {
     },
     'shell': {
         'pytest': {
-            'command': 'pytest',
+            'command': sys.executable,
+            'arguments': ['-m', 'pytest', TEST_DIR],
             'coverage': {
-                'arguments': [f'--cov={about.project}', '--cov-report', f'html:{COVERAGE_DIR}', TEST_DIR]
+                'arguments': ['-m', 'pytest', f'--cov={about.project}', '--cov-report', f'html:{COVERAGE_DIR}', TEST_DIR]
             }
         },
     },
