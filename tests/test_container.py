@@ -5,15 +5,13 @@ from assertpy import assert_that
 import pythern.container as container
 
 
-
 class TestContainer(unittest.TestCase):
-
     def setUp(self):
         self.service = Service()
-        self.service_interface = 'service'
+        self.service_interface = "service"
         self.object_type = Manager
-        self.type_interface = 'manager'
-        self.composite_interface = 'composite'
+        self.type_interface = "manager"
+        self.composite_interface = "composite"
         self.composite_type = RegisteredCompositeObject
         self.container = container.Container()
         self.container.register_instance(self.service_interface, self.service)
@@ -24,7 +22,7 @@ class TestContainer(unittest.TestCase):
         assert_that(self.container.can_resolve(self.service_interface)).is_true()
 
     def test_returns_false_if_instance_for_specified_interface_cannot_be_resolved(self):
-        assert_that(self.container.can_resolve('inexistent_instance')).is_false()
+        assert_that(self.container.can_resolve("inexistent_instance")).is_false()
 
     def test_can_resolve_specified_instance(self):
         resolved_instance = self.container.resolve(self.service_interface)
@@ -84,7 +82,7 @@ class UnresolvableObject:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     unittest.main()

@@ -1,9 +1,13 @@
 assertpy
+black
 bolt-ta
 conttest
 coverage
 m2r2
+pylama
+pylama[all]
 pytest
 pytest-cov
 sphinx
 sphinx-rtd-theme
+wheel

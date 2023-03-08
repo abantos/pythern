@@ -43,7 +43,7 @@ class as it is:
 
     factory = core_factory.ObjectBuilderFactory()
 
-    
+
     factory.register_type('standard', StandardAccountingServiceBuilder())
     factory.register_type('QuickBooks', QuickBooksOnlineAccountingServiceBuilder())
 
@@ -79,7 +79,7 @@ losing any flexibility.
 As you can see the interface is self explanatory, but sometimes you may want to
 make some improvements. The following example builds on top of what we already
 implemented, but we are going to provide a nicer interface for the factory.
-The service and builder classes remain the same, but we are going to derive a 
+The service and builder classes remain the same, but we are going to derive a
 class from object factory:
 
 ..  code-block:: python
@@ -94,7 +94,7 @@ class from object factory:
 
     factory = core_factory.AccountingServiceFactory()
 
-    
+
     factory.register_type('standard', StandardAccountingServiceBuilder())
     factory.register_type('QuickBooks', QuickBooksOnlineAccountingServiceBuilder())
 
@@ -125,15 +125,17 @@ created or if it already exist, but as far as the client code is concerned, it
 shouldn't matter.
 """
 
+
 class ObjectBuilderFactory:
     """
     This class provides a flexible interface to create families of objects based
     on a specified ``type_id`` identifier and using a builder object that knows
     how to create and initialize the desired object.
     """
+
     def __init__(self):
         self._registered_types = {}
-    
+
     def create(self, type_id, *args, **kwargs):
         """
         Creates a new object instance for the specified ``type_id`` using the
@@ -154,10 +156,10 @@ class ObjectBuilderFactory:
             An exception is raised when the specified type is not registered.
         """
         builder = self._registered_types.get(type_id)
-        if not builder: raise ObjectTypeNotRegisteredError(type_id)
+        if not builder:
+            raise ObjectTypeNotRegisteredError(type_id)
         _function = builder if callable(builder) else builder.build
         return _function(*args, **kwargs)
-
 
     def is_registered(self, type_id):
         """
@@ -170,7 +172,6 @@ class ObjectBuilderFactory:
             True if the type is registered or False otherwise.
         """
         return type_id in self._registered_types
-
 
     def register_type(self, type_id, builder):
         """
@@ -197,7 +198,7 @@ class ObjectBuilderFactory:
                 def build(self, *args, **kwargs):
                     # Build and return specified object.
 
-            
+
             class CallableClassBuilder:
 
                 def __call__(self, *args, **kwargs):
@@ -223,7 +224,6 @@ class ObjectBuilderFactory:
         """
         self._registered_types[type_id] = builder
 
-
     def unregister_type(self, type_id):
         """
         Unregisters a previously registered type. Trying to unregister a type
@@ -235,14 +235,11 @@ class ObjectBuilderFactory:
         return self._registered_types.pop(type_id)
 
 
-
-
-
 class ObjectTypeNotRegisteredError(ValueError):
     """
     Exception class used to report errors when creating an object types through a
     factory that have not been registered.
     """
+
     def __init__(self, type_id):
         super().__init__(type_id)
-        

@@ -1,5 +1,6 @@
 """
-This module contains an implementation of the `Singleton <https://en.wikipedia.org/wiki/Singleton_pattern>`_
+This module contains an implementation of the
+`Singleton <https://en.wikipedia.org/wiki/Singleton_pattern>`_
 pattern, which allows any type to be implemented as a Singleton.
 
 One of the many problems with Singletons is that, in most naive implementations,
@@ -24,19 +25,15 @@ be one instance. The following is an example on how this class should be used:
         def __init__(self):
             self._instance = _RatingServiceImp()
 
-
         def instance(self):
             return self._instance
 
 
-    
     class _RatingServiceImp:
-
 
         def rate(self, shipment_id):
             # rate the shipment
 
-        
         def get_quote(self, shipment_id):
             # get quote for shipment
 
@@ -70,6 +67,7 @@ class Singleton(type):
     Metaclass that insures only one instance of a type is ever created. This
     class is intended to be used to declare Singleton types.
     """
+
     _instances = {}
 
     def __call__(cls, *args, **kwargs):

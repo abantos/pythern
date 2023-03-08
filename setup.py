@@ -3,7 +3,7 @@ from m2r2 import parse_from_file
 from os import path
 from pythern import about
 
-readme_file = path.join(path.dirname(path.abspath(__file__)), 'README.md')
+readme_file = path.join(path.dirname(path.abspath(__file__)), "README.md")
 readme = parse_from_file(readme_file)
 
 packages = find_packages()
