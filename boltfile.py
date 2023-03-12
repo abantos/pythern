@@ -55,20 +55,5 @@ config = {
     "mkdir": {
         "directory": OUTPUT_DIR,
     },
-    "nose": {
-        "directory": TEST_DIR,
-        "ci": {
-            "options": {
-                "with-xunit": True,
-                "xunit-file": os.path.join(OUTPUT_DIR, "unit_tests_log.xml"),
-                "with-coverage": True,
-                "cover-erase": True,
-                "cover-package": about.project,
-                "cover-html": True,
-                "cover-html-dir": COVERAGE_DIR,
-                "cover-branches": True,
-            },
-        },
-    },
     "conttest": {"task": "ut"},
 }
