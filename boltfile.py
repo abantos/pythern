@@ -18,6 +18,7 @@ SRC_DIR = os.path.join(PROJECT_ROOT, about.project)
 TEST_DIR = os.path.join(PROJECT_ROOT, "tests")
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "output")
 COVERAGE_DIR = os.path.join(OUTPUT_DIR, "coverage")
+TEST_RESULTS_REPORT = os.path.join(OUTPUT_DIR, "unit", "test-report.html")
 
 
 config = {
@@ -35,6 +36,7 @@ config = {
                 "arguments": [
                     "-m",
                     "pytest",
+                    f"--html={TEST_RESULTS_REPORT}",
                     f"--cov={about.project}",
                     "--cov-report",
                     f"html:{COVERAGE_DIR}",
