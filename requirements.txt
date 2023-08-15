@@ -8,6 +8,7 @@ pylama
 pylama[all]
 pytest
 pytest-cov
+pytest-html
 sphinx<7.0
 sphinx-rtd-theme
 wheel
