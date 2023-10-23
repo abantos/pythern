@@ -17,6 +17,10 @@ class TestContainer(unittest.TestCase):
         self.container.register_instance(self.service_interface, self.service)
         self.container.register_type(self.type_interface, self.object_type)
         self.container.register_type(self.composite_interface, self.composite_type)
+        self.factory_interface = 'factory'
+        self.factory = Factory()
+        self.container.register_factory(self.factory_interface, self.factory, is_singleton=False)
+
 
     def test_can_register_an_instance(self):
         assert_that(self.container.can_resolve(self.service_interface)).is_true()
@@ -57,6 +61,26 @@ class TestContainer(unittest.TestCase):
         resolved = self.container.resolve(UnresolvableObject)
         assert_that(resolved).is_none()
 
+    def test_can_register_a_factory(self):
+        assert_that(self.container.can_resolve(self.factory_interface)).is_true()
+
+    def test_factory_is_called_when_resolved(self):
+        self.container.resolve(self.factory_interface)
+        assert_that(self.factory.invoked_container).is_equal_to(self.container)
+
+    def test_new_instance_is_created_if_not_singleton(self):
+        instance_1 = self.container.resolve(self.factory_interface)
+        instance_2 = self.container.resolve(self.factory_interface)
+        assert_that(instance_1).is_not_same_as(instance_2)
+        self.assertIsNot(instance_1, instance_2)
+
+    def test_returns_single_instance_if_is_singleton(self):
+        self.container.register_factory(self.factory_interface, self.factory, is_singleton=True)
+        instance_1 = self.container.resolve(self.factory_interface)
+        instance_2 = self.container.resolve(self.factory_interface)
+        assert_that(instance_1).is_same_as(instance_2)
+        self.assertIs(instance_1, instance_2)
+
 
 class Service:
     pass
@@ -82,6 +106,16 @@ class UnresolvableObject:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+
+
+class Factory:
+    def __init__(self):
+        self.invoked_container = None
+
+    def __call__(self, container):
+        self.invoked_container = container
+        return Manager()
+
 
 
 if __name__ == "__main__":
