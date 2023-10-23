@@ -3,7 +3,7 @@
 
 project = "pythern"
 version = "0.0"
-release = "0.0.4"
+release = "0.0.5"
 description = "A dependency injection container for python applications"
 copyright = "2018 Abantos"
 author = "Isaac Rodriguez"
