@@ -31,11 +31,13 @@ config = {
     "shell": {
         "pytest": {
             "command": sys.executable,
-            "arguments": ["-m", "pytest", TEST_DIR],
+            "arguments": ["-m", "pytest", "-p", "no:pylama", TEST_DIR],
             "coverage": {
                 "arguments": [
                     "-m",
                     "pytest",
+                    "-p",
+                    "no:pylama",
                     f"--html={TEST_RESULTS_REPORT}",
                     f"--cov={about.project}",
                     "--cov-report",
