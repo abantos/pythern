@@ -20,4 +20,5 @@ setup(
     keywords=about.keywords,
     classifiers=about.classifiers,
     packages=packages,
+    python_requires=">=3.10",
 )
