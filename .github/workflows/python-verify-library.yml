@@ -29,7 +29,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel
         pip install -r requirements.txt
-        python setup.py develop
+        pip install --no-build-isolation -e .
     - name: Run Tests
       run: |
         bolt run-unit-tests
